@@ -1,0 +1,34 @@
+import csv
+import matplotlib.pyplot as plt
+s = open('Ko2019.csv',encoding = 'cp949')
+d = open('Ko2020.csv',encoding = 'cp949')
+f = open('Ko2021.csv',encoding = 'cp949')
+data2019 = csv.reader(s)
+data2020 = csv.reader(d)
+data2021 = csv.reader(f)
+for x in range(6) :
+    next(data2019)
+    next(data2020)
+    next(data2021)
+
+month = []
+score = []
+for i in data2019 :
+    month.append(i[0][2:])
+    score.append(int(i[3].replace(',','')))
+month.pop()
+score.pop()
+for i in data2020 :
+    month.append(i[0][2:])
+    score.append(int(i[3].replace(',','')))
+month.pop()
+score.pop()
+for i in data2021 :
+    month.append(i[0][2:])
+    score.append(int(i[3].replace(',','')))    
+plt.figure(figsize = (25,5))
+month.pop()
+score.pop()
+print(score)
+print(month)
+plt.plot(month,score)
