@@ -27,6 +27,13 @@ for i in data2021 :
     month.append(i[0][2:])
     score.append(int(i[3].replace(',','')))    
 plt.figure(figsize = (25,5))
+
+num = 0
+
+for i in score:
+    score[num] = score[num]/100000000
+    num+=1
+    
 month.pop()
 score.pop()
 print(score)
