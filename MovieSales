@@ -1,5 +1,9 @@
+from matplotlib import pyplot
 import csv
 import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.ticker as ticker
+
 s = open('Ko2019.csv',encoding = 'cp949')
 d = open('Ko2020.csv',encoding = 'cp949')
 f = open('Ko2021.csv',encoding = 'cp949')
@@ -10,49 +14,50 @@ for x in range(6) :
     next(data2019)
     next(data2020)
     next(data2021)
-
 month = []
-score = []
+sales = []
 audience = []
 for i in data2019 :
     month.append(i[0][2:])
-    score.append(int(i[3].replace(',','')))
+    sales.append(int(i[3].replace(',','')))
     audience.append(int(i[4].replace(',','')))
 month.pop()
-score.pop()
+sales.pop()
 audience.pop()
 for i in data2020 :
     month.append(i[0][2:])
-    score.append(int(i[3].replace(',','')))
+    sales.append(int(i[3].replace(',','')))
     audience.append(int(i[4].replace(',','')))
 month.pop()
-score.pop()
+sales.pop()
 audience.pop()
 for i in data2021 :
     month.append(i[0][2:])
-    score.append(int(i[3].replace(',','')))
-    audience.append(int(i[4].replace(',','')))    
+    sales.append(int(i[3].replace(',','')))
+    audience.append(int(i[4].replace(',','')))
 plt.figure(figsize = (25,5))
 
 num = 0
 
-for i in score:
-    score[num] = score[num]/100000000
+for i in sales:
+    sales[num] = sales[num]/100000000
     num+=1
 else :
     num = 0
-
+    
 for i in audience:
     audience[num] = audience[num]/10000
     num+=1
-    
+
 month.pop()
-score.pop()
+sales.pop()
 audience.pop()
 
 plt.rcParams['figure.figsize'] = (30,5)
 plt.rcParams['font.size'] = 14
 plt.rcParams['font.family'] = 'NanumGothic'
+
+
 
 fig, ax1 = plt.subplots()
 ax1.set_xlabel('날짜')
