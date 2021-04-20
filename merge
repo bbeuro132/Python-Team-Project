@@ -1,0 +1,6 @@
+import pandas as pd
+csv_names = ['./Ko2019.csv', './Ko2020.csv', './Ko2021.csv']
+appended_data = pd.DataFrame()
+for name in csv_names:
+    pd_data = pd.read_csv(name)
+    appended_data = appended_data.append(pd_data)
